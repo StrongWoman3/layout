@@ -5,179 +5,93 @@
     android:id="@+id/ConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".Calculator">
 
-
-    <!-- app:layout_constraint{x}_to{y}of="{z}"
-    x- это констрэинт привязываемой вью
-    у-это сторона view к которой мы привязались
-     z- id view к которому мы привязались
-
-     привязывать между собой можно только лево и право, верх и низ, старт и энд-->
-
-
-    <!-- <TextView
-        android:id="@+id/View1"
-        android:layout_width="100dp"
+    <EditText
+        android:id="@+id/editTextNumberDecimal1"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="120dp"
-        android:layout_marginTop="176dp"
-        android:text="View1"
-        android:textSize="24sp"
+        android:layout_marginTop="44dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toStartOf="@+id/editTextNumberDecimal2"
+        app:layout_constraintHorizontal_bias="0.408"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/View2"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/editTextNumberDecimal2"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="84dp"
-        android:text="View2"
-        android:textSize="14sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/View1"
-        app:layout_constraintLeft_toRightOf="@+id/View1" />
+        android:layout_marginEnd="40dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextNumberDecimal1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/editTextNumberDecimal1" />
 
-    <TextView
-        android:id="@+id/View3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="24dp"
-        android:text="View3"
-        android:textSize="14sp"
-        app:layout_constraintLeft_toRightOf="@+id/View1"
-        app:layout_constraintTop_toBottomOf="@+id/View1" />
-
-    <TextView
-        android:id="@+id/View4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="4dp"
-        android:layout_marginBottom="32dp"
-        android:text="View4"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/View1"
-        app:layout_constraintLeft_toRightOf="@+id/View1" />
-
-    <ImageView
-        android:id="@+id/imageView"
+    <RadioGroup
+        android:id="@+id/radiogroup"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/ic_launcher_background"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintDimensionRatio="16:9"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.99" />
+        android:layout_height="51dp"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/editTextNumberDecimal2"
+        app:layout_constraintStart_toStartOf="@+id/editTextNumberDecimal1"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNumberDecimal1">
 
-    <TextView
-        android:id="@+id/view_A"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        <RadioButton
+            android:id="@+id/add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Add"
+            tools:layout_editor_absoluteX="105dp"
+            tools:layout_editor_absoluteY="190dp" />
 
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="88dp"
-        android:text="View A"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <RadioButton
+            android:id="@+id/subtract"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Subtract" />
 
-    <TextView
-        android:id="@+id/view_B"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:text="View B"
-        app:layout_constraintTop_toBottomOf="@+id/view_A" />
+        <RadioButton
+            android:id="@+id/multiple"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Multiple" />
 
-    <TextView
-        android:id="@+id/view_C"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginLeft="8dp"
-        android:text="View C"
-        app:layout_constraintLeft_toRightOf="@+id/view_A"
-        app:layout_constraintTop_toBottomOf="@+id/view_B" />
+        <RadioButton
+            android:id="@+id/divide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Divide" />
+    </RadioGroup>
 
-    <TextView
-        android:id="@+id/Left_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="128dp"
-        android:layout_marginTop="4dp"
-        android:text="Left_view"
-        android:textSize="12sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/Right_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Right_view"
-        android:textSize="20sp"
-        app:layout_constraintBaseline_toBaselineOf="@id/Left_view"
-        app:layout_constraintLeft_toRightOf="@id/Left_view" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/calc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="spread_inside"
-        app:layout_constraintStart_toEndOf="@+id/button4"
-        tools:layout_editor_absoluteY="324dp" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintEnd_toStartOf="@+id/button5"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="315dp" />-->
+        android:layout_marginTop="52dp"
+        android:text="Calculate"
+        app:layout_constraintEnd_toEndOf="@+id/radiogroup"
+        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintStart_toStartOf="@+id/radiogroup"
+        app:layout_constraintTop_toBottomOf="@+id/radiogroup" />
 
     <TextView
-        android:id="@+id/hide1"
+        android:id="@+id/result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="hideMe"
-        android:visibility="gone"
-        app:layout_constraintLeft_toLefttOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/hide2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_goneMarginTop="58dp"
-        android:text="hide2"
-        app:layout_constraintEnd_toStartOf="@+id/guideline3"
-        app:layout_constraintHorizontal_bias="0.512"
-        app:layout_constraintLeft_toRightOf="@id/hide1"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
-        tools:layout_editor_absoluteY="82dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="67dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_end="72dp" />
-
+        android:layout_marginTop="56dp"
+        android:text="You'r answer will be displayed here"
+        app:layout_constraintEnd_toEndOf="@+id/calc"
+        app:layout_constraintHorizontal_bias="0.567"
+        app:layout_constraintStart_toStartOf="@+id/calc"
+        app:layout_constraintTop_toBottomOf="@+id/calc" />
 </androidx.constraintlayout.widget.ConstraintLayout>
