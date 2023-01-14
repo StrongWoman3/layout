@@ -16,6 +16,8 @@ import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.BreakIterator;
+
 public class Calculator extends AppCompatActivity {
     private static final String LogcatTag = "CALCULATOR_ACTIVITY";
     private static final String LifecycleTag = "LIFECYCLE";
@@ -49,7 +51,7 @@ public class Calculator extends AppCompatActivity {
                 Log.d(LogcatTag," Button have been pushed");
                 calculateAnswer();
                 Intent i = new Intent(Calculator.this,MainActivity.class); // написать письмо
-                startActivity(i); // отправить по почте
+              //  startActivity(i); // отправить по почте
             }
         });
     }
@@ -60,20 +62,38 @@ public class Calculator extends AppCompatActivity {
         RadioButton sub = (RadioButton) findViewById(R.id.subtract);
         RadioButton multiply = (RadioButton) findViewById(R.id.multiple);
         RadioButton divide = (RadioButton) findViewById(R.id.divide);
-numberOne.setText("0");
+
+/*numberOne.setText("0");
 numberTwo.setText("0");
-add.setChecked(true);
+add.setChecked(true);*/
 
 
         TextView answer = (TextView) findViewById(R.id.result);
-        Log.d(LogcatTag,"Succesfully grabbed data from input fields");
-        Log.d(LogcatTag,"numone is: "+ numberOne +"numtwo is "+ numberTwo);
-        float numone = Integer.parseInt(numberOne.getText().toString());
-        float numtwo = Integer.parseInt(numberTwo.getText().toString());
+
+        Log.d(LogcatTag,"All views have have been founded");
+        //обработка ошибок, чтобы не вылетало
+        //try {
+       //    int a = 25/0;
+       // } catch (ArithmeticException e){
+       //     e.printStackTrace();
+      //  }
+
+float numtwo = 0;
+float numone=0;
+        String num1 = numOne.getText().toString();
+        String num2 = numTwo.getText().toString();
+     /*   if (num1.equals("") && num1!=null){
+            numone = Integer.parseInt(numberOne.getText().toString());
+        }
+        if (num2.equals("") && num1!=null){
+            numtwo = Integer.parseInt(numberOne.getText().toString());
+        }*/
+Log.d(LogcatTag,"Sucessfully grabbed data from fields");
+        Log.d(LogcatTag,"numone is "+numone+ "and"+ "numtwo is"+numtwo);
         float solution = 0;
         if (add.isChecked()) {
             Log.d(LogcatTag,"Operation is add");
-            solution = numone + numtwo;
+            solution = num1 + num2;
         }
         if (sub.isChecked()) {
             Log.d(LogcatTag,"Operation is sub");
