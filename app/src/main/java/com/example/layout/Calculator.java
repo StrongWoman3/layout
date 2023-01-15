@@ -16,6 +16,7 @@ import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
 import java.text.BreakIterator;
 
 public class Calculator extends AppCompatActivity {
@@ -49,13 +50,64 @@ public class Calculator extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.d(LogcatTag," Button have been pushed");
-                calculateAnswer();
+                 try {
+                     calculateAnswer();
+                    }
+                 /*catch (IOException e){
+                     android.widget.Toast.makeText(Calculator.this, "there is a problem", Toast.LENGTH_SHORT).show();
+                 }
+                 catch (ArithmeticException e){
+                        e.printStackTrace();
+                      android.widget.Toast.makeText(Calculator.this, "there is a problem", Toast.LENGTH_SHORT).show();
+                    finish();
+                    }
+
+                    восстановление
+                    */
+                 catch (Exception e){
+             /*  прерывание
+                 e.printStackTrace();
+                     android.widget.Toast.makeText(Calculate.this, "Exeption", Toast.LENGTH_SHORT).show();
+                     finish();
+
+                     восстановление*/
+                     e.printStackTrace();
+                     android.widget.Toast.makeText(Calculator.this, "there is a problem", Toast.LENGTH_SHORT).show();
+                     dropFields();
+                 }
+
                 Intent i = new Intent(Calculator.this,MainActivity.class); // написать письмо
               //  startActivity(i); // отправить по почте
             }
         });
     }
-    private void calculateAnswer(){
+    @Override
+    protected void OnStart(){
+        super.onStart();
+        Log.d(LifecycleTag,"Im onStart");
+    }
+    @Override
+    protected void OnStop(){
+        super.onStop();
+        Log.d(LifecycleTag,"Im onStop");
+    }
+    @Override
+    protected void OnDestroy(){
+        super.OnDestroy();
+        Log.d(LifecycleTag,"Im OnDestroy");
+    }
+    @Override
+    protected void OnPause(){
+        super.OnPause();
+        Log.d(LifecycleTag,"Im OnPause");
+    }
+    @Override
+    protected void OnResume(){
+        super.OnResume();
+        Log.d(LifecycleTag,"Im OnResume");
+    }
+
+    private void DropFields(){
         EditText numberOne = findViewById(R.id.editTextNumberDecimal1);
         EditText numberTwo = findViewById(R.id.editTextNumberDecimal2);
         RadioButton add = (RadioButton) findViewById(R.id.add);
@@ -63,20 +115,41 @@ public class Calculator extends AppCompatActivity {
         RadioButton multiply = (RadioButton) findViewById(R.id.multiple);
         RadioButton divide = (RadioButton) findViewById(R.id.divide);
 
-/*numberOne.setText("0");
+        numberOne.setText("0");
+        numberTwo.setText("0");
+        add.setChecked(true);
+
+
+        TextView answer = (TextView) findViewById(R.id.result);
+        answer.setText("You have a problem");
+    }
+    private void calculateAnswer() throws ArithmeticException, IOException{
+        EditText numberOne = findViewById(R.id.editTextNumberDecimal1);
+        EditText numberTwo = findViewById(R.id.editTextNumberDecimal2);
+        RadioButton add = (RadioButton) findViewById(R.id.add);
+        RadioButton sub = (RadioButton) findViewById(R.id.subtract);
+        RadioButton multiply = (RadioButton) findViewById(R.id.multiple);
+        RadioButton divide = (RadioButton) findViewById(R.id.divide);
+
+numberOne.setText("0");
 numberTwo.setText("0");
-add.setChecked(true);*/
+add.setChecked(true);
 
 
         TextView answer = (TextView) findViewById(R.id.result);
 
         Log.d(LogcatTag,"All views have have been founded");
+        throw new ArithmeticException("exeption");
+
+
         //обработка ошибок, чтобы не вылетало
-        //try {
-       //    int a = 25/0;
-       // } catch (ArithmeticException e){
-       //     e.printStackTrace();
-      //  }
+       // try {
+         //  int a = 25/0;
+        //} catch (ArithmeticException e){
+       //     e.printStackTrace(); либо сообщением на экран
+          //  android.widget.Toast.makeText(this, "there is a problem", Toast.LENGTH_SHORT).show();
+            //finish();
+        //}
 
 float numtwo = 0;
 float numone=0;
@@ -116,5 +189,12 @@ Log.d(LogcatTag,"Sucessfully grabbed data from fields");
 answer.setText("The answer is " + solution);
         Context contextApp = getApplicationContext();
         Context context = getBaseContext();
+
+        switch ((int) Math.random()*2){
+            case 0:throw new ArithmeticException("exeption"); break;
+            case 1:throw new IOException("exeption1"); break;
+        }
+
+
     }
 }
